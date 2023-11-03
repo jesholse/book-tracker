@@ -3,7 +3,7 @@ import type { GetStaticPaths } from "astro";
 import BasicLayout from "../../layout/BasicLayout.astro";
 import { getCollection, getEntry } from "astro:content";
 export const getStaticPaths = (async () => {
-    const 2books = await getCollection("books")
+    const books = await getCollection("books")
     return books.map((book)=>({
         params: {slug: book.slug}, props: {book} 
     }))
