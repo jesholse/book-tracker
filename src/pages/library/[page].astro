@@ -1,0 +1,27 @@
+---
+import type { GetStaticPaths } from "astro";
+import BasicLayout from "../../layout/BasicLayout.astro";
+import LibraryBook from "../../components/LibraryBook.astro";
+import { getCollection } from "astro:content";
+export const getStaticPaths = (async ({paginate}) => {
+    const books = await getCollection("books")
+    const booksSorted = books.sort((a,b) => a.data.title - b.data.title)
+    return paginate(booksSorted, {pageSize: 5})
+}) satisfies GetStaticPaths;
+const {page} = Astro.props
+console.log(page)
+---
+<BasicLayout>
+    <main> 
+        <section class="h-full w-full bg-white">
+            <h1 class="text-5xl text-center">Bibliotek</h1>
+            <div class="md:p-12 p-4 flex flex-col justify-center items-center gap-6 bg-white w-full">
+                {page.data.map((book)=>(<LibraryBook slug={book.slug} title={book.data.title} image={book.data.image} author={book.data.author} pages={book.data.pages} excerpt={book.data.excerpt}></LibraryBook>))}
+                <nav class="p-4 flex flex-row items-center max-w-3xl mx-auto">
+                    {page.url.prev ? <a class="block text-black p-2 rounded-lg underline underline-offset-3" href={page.url.prev}>Previous page</a> : null}
+                    {page.url.next ? <a class="block text-black p-2 rounded-lg underline underline-offset-3" href={page.url.next}>Next page</a> : null} 
+                </nav>
+            </div>
+        </section>
+    </main>
+</BasicLayout>

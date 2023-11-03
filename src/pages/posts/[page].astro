@@ -1,0 +1,41 @@
+---
+import BasicLayout from "../../layout/BasicLayout.astro";
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+export const getStaticPaths = (async({paginate}) => {
+    const posts = await getCollection("posts")
+    const postsSorted = posts.sort((a, b) => a.data.publishDate - b.data.publishDate).reverse()
+    console.log(postsSorted)
+    return paginate(postsSorted, {pageSize: 3})
+}) satisfies GetStaticPaths;
+const {page} = Astro.props
+---
+<BasicLayout>
+    <div class=" bg-white pb-4 flex flex-col w-100% flex-wrap">
+         <h1 class="text-5xl text-center">Blogg</h1>
+        {page.data.map((post)=>(
+            <article class="p-4 flex flex-row items-center max-w-3xl mx-auto">
+                <!--<div class="flex flex-row  ">
+                    <img class=" p-2" src={post.data.image}/>
+                </div>-->
+                <div class="mx-auto">
+                    <div class="flex flex-col">
+                        <h1 class="text-4xl hover:text-slate-400"><a href={`/posts/${post.slug}`}>{post.data.title}</a></h1>
+                        <div class="text-sm mx-auto line-clamp-3 leading-7 text-lg text-slate-700">
+                            {post.data.excerpt}
+                        </div>
+                    </div>
+                   <!-- <footer class="flex flex-row gap-2 p-2 mx-auto  ">
+                        {post.data.tags.map((tag)=>(
+                            <div class="p-2 rounded-full text-center text-sm bg-slate-200 h-fit">{tag}</div>
+                        ))}    
+                    </footer> --> 
+                </div>
+            </article>
+        ))}
+        <nav class="p-4 flex flex-row items-center max-w-3xl mx-auto">
+             {page.url.prev ? <a class="block text-black p-2 rounded-lg underline underline-offset-3" href={page.url.prev}>Previous page</a> : null}
+            {page.url.next ? <a class="block text-black p-2 rounded-lg underline underline-offset-3" href={page.url.next}>Next page</a> : null} 
+        </nav>
+    </div>
+</BasicLayout>

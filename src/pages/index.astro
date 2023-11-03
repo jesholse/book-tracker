@@ -1,0 +1,30 @@
+---
+import BasicLayout from "../layout/BasicLayout.astro";
+import Book from "../components/Book.astro"
+import FeaturedBook from "../components/FeaturedBook.astro"
+import { getEntry } from "astro:content";
+const book = await getEntry("books", "dina-tjänare-hör")
+const reading = await getEntry("books", "koka-björn")
+---
+
+<BasicLayout>
+	<main class="h-fit flex flex-col bg-white">
+		<section class="flex md:flex-row flex-col  max-w-5xl mx-auto">
+			<div class="p-12 flex flex-col justify-center items-center gap-3 bg-white md:w-1/2">
+				<h1 class="text-3xl font-bold text-center">Välkommen till norrländsk litteratur</h1>
+				<h3 class="text-xl ">Håll koll på litteraturen</h3>
+				<!--<input class="rounded-md p-2 w-3/4 border-2" placeholder="Sök bok"/>-->
+				<a href="/library" class="text-black p-2 border-b-2">Bläddra i biblioteket</a>
+			</div>
+			<div class="h-fit p-4 flex flex-col gap-5 bg-white md:w-1/2">
+				<FeaturedBook slug={book.slug} title={book.data.title} excerpt={book.data.excerpt} image={book.data.image} author={book.data.author}></FeaturedBook>
+			</div>
+		</section>
+		<section class="h-fit  p-4 max-w-5xl mx-auto">
+				<h1 class="text-3xl text-center font-bold pt-6">Läser just nu</h1>
+				<div class="h-fit flex flex-col flex-wrap  bg-white">
+					<Book slug={reading.slug} title={reading.data.title} excerpt={reading.data.excerpt} image={reading.data.image} author={reading.data.author}></Book>
+				</div>
+		</section>
+	</main>
+</BasicLayout>

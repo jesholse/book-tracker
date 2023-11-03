@@ -1,0 +1,26 @@
+---
+import type { GetStaticPaths } from "astro";
+import BasicLayout from "../../layout/BasicLayout.astro";
+import { getCollection, getEntry } from "astro:content";
+export const getStaticPaths = (async () => {
+    const 2books = await getCollection("books")
+    return books.map((book)=>({
+        params: {slug: book.slug}, props: {book} 
+    }))
+}) satisfies GetStaticPaths;
+const {book} = Astro.props
+const getAuthor = await getEntry("authors", book.data.author.slug)
+---
+
+<BasicLayout>
+    <main>
+        <div class=" bg-white pb-4 flex flex-col w-100% flex-wrap">
+            <h1 class="md:text-5xl text-3xl text-center">{book.data.title}</h1>
+            <article class="p-4 w- max-w-3xl mx-auto [&>p]:mb-2">
+                <div>{book.data.pages}</div>
+                <div>{getAuthor.data.name}</div>
+                {book.data.excerpt}
+            </article>
+        </div>
+    </main>
+</BasicLayout>
