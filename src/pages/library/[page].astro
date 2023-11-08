@@ -6,7 +6,7 @@ import { getCollection } from "astro:content";
 export const getStaticPaths = (async ({paginate}) => {
     const books = await getCollection("books")
     const booksSorted = books.sort((a,b) => a.data.title - b.data.title)
-    return paginate(booksSorted, {pageSize: 5})
+    return paginate(booksSorted, {pageSize: 4})
 }) satisfies GetStaticPaths;
 const {page} = Astro.props
 console.log(page)

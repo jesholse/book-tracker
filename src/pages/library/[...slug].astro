@@ -10,6 +10,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 const {book} = Astro.props
 const getAuthor = await getEntry("authors", book.data.author.slug)
+const {Content} = await book.render()
 ---
 
 <BasicLayout>
@@ -17,9 +18,8 @@ const getAuthor = await getEntry("authors", book.data.author.slug)
         <div class=" bg-white pb-4 flex flex-col w-100% flex-wrap">
             <h1 class="md:text-5xl text-3xl text-center">{book.data.title}</h1>
             <article class="p-4 w- max-w-3xl mx-auto [&>p]:mb-2">
-                <div>{book.data.pages}</div>
-                <div>{getAuthor.data.name}</div>
-                {book.data.excerpt}
+                <div class="hidden">{getAuthor?.data.name}</div>
+                <Content></Content>
             </article>
         </div>
     </main>
