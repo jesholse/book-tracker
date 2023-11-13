@@ -14,7 +14,7 @@ const reading = await getEntry("books", "i-själen-förskräckt")
 				<h1 class="text-3xl font-bold text-center">Välkommen till norrländsk litteratur</h1>
 				<h3 class="text-xl ">Håll koll på litteraturen</h3>
 				<!--<input class="rounded-md p-2 w-3/4 border-2" placeholder="Sök bok"/>-->
-				<a href="/library" class="text-black p-2 border-b-2">Bläddra i biblioteket</a>
+				<a href="/library" class="text-black p-1 border-b-2 border-slate-400 hover:text-slate-600">Bläddra i biblioteket</a>
 			</div>
 			<div class="h-fit p-4 flex flex-col gap-5 bg-white md:w-1/2">
 				<FeaturedBook slug={book.slug} title={book.data.title} excerpt={book.data.excerpt} image={book.data.image} author={book.data.author}></FeaturedBook>
