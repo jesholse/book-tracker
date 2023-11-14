@@ -9,18 +9,18 @@ export const getStaticPaths = (async () => {
     }))
 }) satisfies GetStaticPaths;
 const {book} = Astro.props
-const getAuthor = await getEntry("authors", book.data.author.slug)
+
 const {Content} = await book.render()
 ---
 
-<BasicLayout>
+<BasicLayout title={book.data.title}>
     <main>
-        <div class=" bg-white pb-4 flex flex-col w-100% flex-wrap">
-            <h1 class="md:text-5xl text-3xl text-center">{book.data.title}</h1>
+        <section class=" bg-white pb-4 flex flex-col w-100% flex-wrap">
             <article class="p-4 w- max-w-3xl mx-auto [&>p]:mb-2">
-                <div class="hidden">{getAuthor?.data.name}</div>
+                <img transition:name={`image-${book.slug}`} class="mx-auto pb-4" src={`${book.data.image}`} alt="">
+                <h1 transition:name={`title-${book.slug}`} class="md:text-3xl text-3xl"><a>{book.data.title}</a></h1>
                 <Content></Content>
             </article>
-        </div>
+        </section>
     </main>
 </BasicLayout>

@@ -28,7 +28,7 @@ const postCollection = defineCollection({
 const authorCollection = defineCollection({
   type: "content",
   schema: z.object({
-    name: z.string(),
+    name: z.string()     
   }),
 });
 

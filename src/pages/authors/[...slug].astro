@@ -15,10 +15,10 @@ const getBooks = await getCollection("books", ({data})=>{
     return data?.author.slug === author.slug
 })
 ---
-<BasicLayout>
+<BasicLayout title={author.data.name}>
     <main>
         <section class="h-full w-full bg-white">
-            <h1 class="text-4xl w-full text-center bg-white">{author.data.name}</h1>
+            <h5 class="text-4xl w-full text-center bg-white">{author.data.name}</h5>
             <div class="p-4 flex flex-col justify-center items-center gap-2 bg-white w-full">
                 {getBooks.map((book)=>(<AuthorBook slug={book.slug} title={book.data.title} image={book.data.image} author={book.data.author} pages={book.data.pages} excerpt={book.data.excerpt}></AuthorBook>))}
             </div> 

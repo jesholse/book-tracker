@@ -1,19 +1,18 @@
 ---
 const {title, image, author, pages, excerpt, slug} = Astro.props
 import { getEntry, getCollection } from "astro:content";
+import { fade } from "astro:transitions";
 const getAuthor = await getEntry("authors", author.slug)
-const getBooks = await getCollection("books", ({data})=>{
-return data?.author.slug === author.slug
-})
 
+console.log(slug)
 ---
 
 <div class="rounded-mx flex md:flex-row flex-col gap-4 px-4 py-1 max-w-3xl">
-    <img class="bg-slate-50 md:w-28" src={image}/>
-    <div class="">
-        <h3 class="text-3xl hover:text-slate-700"><a href={`/library/${slug}`}>{title}</a></h3>
+    <img transition:name={`image-${slug}`} class="bg-slate-50 md:w-28" src={image}/>
+    <div class="flex flex-col">
+        <h1 transition:name={`title-${slug}`} class="text-3xl hover:text-slate-700"><a href={`/library/${slug}`}>{title}</a></h1>
         <h5 class="text-sm text-slate-500 mt-1 hover:underline"><a href={`/authors/${author.slug}`}>{getAuthor?.data.name}</a></h5>
-        <p class="line-clamp-4 text-md ">{excerpt}</p>
+        <p transition:name={`excerpt-${slug}`} class="line-clamp-4 text-md ">{excerpt}</p>
        <!-- <div class="flex flex-row gap-1 text-sm text-slate-500">Andra böcker:{getBooks.map((book)=>(<div>{book.data.title}</div>))}</div> -->
     </div>
 </div>
