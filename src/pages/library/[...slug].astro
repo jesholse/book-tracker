@@ -17,8 +17,8 @@ const {Content} = await book.render()
     <main>
         <section class=" bg-white pb-4 flex flex-col w-100% flex-wrap">
             <article class="p-4 w- max-w-3xl mx-auto [&>p]:mb-2">
-                <img transition:name={`image-${book.slug}`} class="mx-auto pb-4" src={`${book.data.image}`} alt="">
-                <h1 transition:name={`title-${book.slug}`} class="md:text-3xl text-3xl"><a>{book.data.title}</a></h1>
+                <img transition:name={`image-${book.slug}`} class="mx-auto" src={`${book.data.image}`} alt="">
+                <h1 transition:name={`title-${book.slug}`} class="md:text-3xl text-3xl mt-4"><a>{book.data.title}</a></h1>
                 <Content></Content>
             </article>
         </section>

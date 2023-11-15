@@ -11,8 +11,8 @@ console.log(slug)
     <img transition:name={`image-${slug}`} class="bg-slate-50 md:w-28" src={image}/>
     <div class="flex flex-col">
         <h1 transition:name={`title-${slug}`} class="text-3xl hover:text-slate-700"><a href={`/library/${slug}`}>{title}</a></h1>
-        <h5 class="text-sm text-slate-500 mt-1 hover:underline"><a href={`/authors/${author.slug}`}>{getAuthor?.data.name}</a></h5>
-        <p transition:name={`excerpt-${slug}`} class="line-clamp-4 text-md ">{excerpt}</p>
+        <h5 class="text-sm text-slate-500 mt-1 hover:underline"><a href={`/authors/${author.slug}`}>{getAuthor.data.name}</a></h5>
+        <p class="line-clamp-4 text-md ">{excerpt}</p>
        <!-- <div class="flex flex-row gap-1 text-sm text-slate-500">Andra böcker:{getBooks.map((book)=>(<div>{book.data.title}</div>))}</div> -->
     </div>
 </div>
