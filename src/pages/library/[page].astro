@@ -5,15 +5,15 @@ import LibraryBook from "../../components/LibraryBook.astro";
 import { getCollection } from "astro:content";
 export const getStaticPaths = (async ({paginate}) => {
     const books = await getCollection("books")
-    const booksSorted = books.sort((a,b) => a.data.title - b.data.title)
-    return paginate(booksSorted, {pageSize: 5})
+   // const booksSorted = books.sort((a,b) => a.data.title - b.data.title)
+    return paginate(books, {pageSize: 4})
 }) satisfies GetStaticPaths;
 const {page} = Astro.props
 ---
 <BasicLayout title="Bibliotek">
     <main> 
         <section class="h-full w-full bg-white">
-            <h1 class="text-4xl text-center">Bibliotek</h1>
+            <h1 transition:name="heading" class="text-4xl text-center">Bibliotek</h1>
             <div class="md:p-12 p-4 flex flex-col justify-center items-center gap-6 bg-white w-full">
                 {page.data.map((book)=>(<LibraryBook slug={book.slug} title={book.data.title} image={book.data.image} author={book.data.author} pages={book.data.pages} excerpt={book.data.excerpt}></LibraryBook>))}
                 <nav class="p-4 flex flex-row items-center max-w-3xl mx-auto">
