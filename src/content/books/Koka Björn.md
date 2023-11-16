@@ -1,7 +1,8 @@
 ---
 title: Koka Björn
 tags: [ett, två, tre]
-author: mikael-niemi
+author: Mikael Niemi
+authorSlug: mikael-niemi
 pages: 145
 rating: 4
 image: https://image.bokus.com/images/9789164205704_200x_koka-bjorn_pocket

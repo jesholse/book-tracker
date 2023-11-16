@@ -17,13 +17,13 @@ const reading = await getEntry("books", "hummelhonung")
 				<a href="/library/1" class="text-black p-1 border-b-2 border-slate-400 hover:text-slate-600">Bläddra i biblioteket</a>
 			</div>
 			<div class="h-fit p-4 flex flex-col gap-5 bg-white md:w-1/2">
-				<FeaturedBook slug={book.slug} title={book.data.title} excerpt={book.data.excerpt} image={book.data.image} author={book.data.author}></FeaturedBook>
+				<FeaturedBook slug={book.slug} title={book.data.title} excerpt={book.data.excerpt} image={book.data.image} authorSlug={book.data.authorSlug} author={book.data.author}></FeaturedBook>
 			</div>
 		</section>
 		<section class="h-fit  p-4 max-w-5xl mx-auto">
 				<h1 class="text-3xl text-center font-bold pt-6">Läser just nu</h1>
 				<div class="h-fit flex flex-col flex-wrap  bg-white">
-					<Book slug={reading.slug} title={reading.data.title} excerpt={reading.data.excerpt} image={reading.data.image} author={reading.data.author}></Book>
+					<Book slug={reading.slug} title={reading.data.title} excerpt={reading.data.excerpt} image={reading.data.image} authorSlug={reading.data.authorSlug} author={reading.data.author}></Book>
 				</div>
 		</section>
 	</main>

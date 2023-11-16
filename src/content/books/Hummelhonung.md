@@ -1,7 +1,8 @@
 ---
 title: Hummelhonung
 tags: [ett, två, tre]
-author: torgny-lindgren
+author: Torgny Lindgren
+authorSlug: torgny-lindgren
 pages: 145
 rating: 4
 image: https://image.bokus.com/images/9789113020280_200x_hummelhonung_e-bok

@@ -1,15 +1,12 @@
 ---
-const {title, image, author, pages, excerpt, slug} = Astro.props
-import { getEntry } from "astro:content";
-const getAuthor = await getEntry("authors", author.slug)
-
+const {title, image, author, authorSlug, pages, excerpt, slug} = Astro.props
 ---
 
 <div class="rounded-mx flex md:flex-row flex-col gap-4 px-4 py-1 max-w-3xl">
     <img transition:name={`image-${slug}`} class="bg-slate-50 md:w-28" src={image}/>
     <div class="flex flex-col">
         <h1 transition:name={`title-${slug}`} class="text-3xl hover:text-slate-700"><a href={`/library/${slug}`}>{title}</a></h1>
-        <h5 class="text-sm text-slate-500 mt-1 hover:underline"><a href={`/authors/${author.slug}`}>Författare</a></h5>
+        <h5 class="text-sm text-slate-500 mt-1 hover:underline"><a href={`/authors/${authorSlug.slug}`}>{author}</a></h5>
         <p class="line-clamp-4 text-md ">{excerpt}</p>
     </div>
 </div>

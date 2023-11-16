@@ -1,7 +1,8 @@
 ---
 title: Din tjänare hör
 tags: [ett, två, tre]
-author: sara-lidman
+author: Sara Lidman
+authorSlug: sara-lidman
 pages: 145
 rating: 4
 image: https://image.bokus.com/images/9789100133917_200x_din-tjanare-hor_e-bok

@@ -1,7 +1,8 @@
 ---
 title: I själen förskräckt
 tags: [ett, två, tre]
-author: anita-salomonsson
+author: Anita Salomonsson
+authorSlug: anita-salomonsson
 pages: 145
 rating: 4
 image: https://image.bokus.com/images/9789113008417_200x_i-sjalen-forskrackt-roman

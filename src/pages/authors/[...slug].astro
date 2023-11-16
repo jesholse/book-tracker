@@ -12,7 +12,7 @@ export const getStaticPaths = (async () => {
 const {author} = Astro.props
 console.log(author.data)
 const getBooks = await getCollection("books", ({data})=>{
-    return data?.author.slug === author.slug
+    return data?.authorSlug.slug === author.slug
 })
 ---
 <BasicLayout title={author.data.name}>
