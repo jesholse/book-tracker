@@ -5,8 +5,8 @@ import LibraryBook from "../../components/LibraryBook.astro";
 import { getCollection } from "astro:content";
 export const getStaticPaths = (async ({paginate}) => {
     const books = await getCollection("books")
-   // const booksSorted = books.sort((a,b) => a.data.title - b.data.title)
-    return paginate(books, {pageSize: 4})
+    const booksSorted = books.sort((a,b) => a.data.publishDate - b.data.publishDate).reverse()
+    return paginate(booksSorted, {pageSize: 4})
 }) satisfies GetStaticPaths;
 const {page} = Astro.props
 ---

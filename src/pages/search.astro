@@ -1,0 +1,16 @@
+---
+import BasicLayout from "../layout/BasicLayout.astro";
+---
+
+<BasicLayout>
+    <div class="mx-auto max-w-3xl md:p-0 p-2 pt-0">
+        <h1 class="text-4xl text-center">Sök bok</h1>
+        <input class="p-2 border-2 my-8 w-full" name="search" type="search" placeholder="Sök" 
+        hx-trigger="input changed delay:500ms, search" 
+        hx-post="/api/books" 
+        hx-target="#target" 
+        hx-indicator="#target"
+        />
+        <div transition:name="search" transition:persist id="target"></div>
+    </div>
+</BasicLayout>
