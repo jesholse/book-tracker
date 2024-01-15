@@ -9,7 +9,6 @@ export const getStaticPaths = (async () => {
     }))
 }) satisfies GetStaticPaths;
 const {book} = Astro.props
-
 const {Content} = await book.render()
 ---
 
@@ -18,7 +17,7 @@ const {Content} = await book.render()
             <article class=" mx-auto [&>p]:mb-2 flex md:flex-row flex-col py-4 bg-white p-4 h-screen md:justify-center">
             <img transition:name={`image-${book.slug}`} class="md:h-96" src={`${book.data.image}`} alt="">
                 <div class="max-w-3xl">
-                   <h1 transition:name={`title-${book.slug}`} class="md:text-3xl text-3xl p-4 text-center"><a>{book.data.title}</a></h1>
+                   <h1 transition:name={`title-${book?.slug}`} class="md:text-3xl text-3xl p-4 text-center"><a>{book.data.title}</a></h1>
                     <div class="md:px-4" transition:animate="slide">
                         <Content></Content>
                     </div>
