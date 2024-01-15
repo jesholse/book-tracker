@@ -14,9 +14,9 @@ const {Content} = await post.render()
 ---
 <BasicLayout title={post.data.title}>
     <main>
-        <div class=" bg-white pb-4 flex flex-col w-100% flex-wrap">
-            <article class="p-4 w- max-w-3xl mx-auto [&>p]:mb-2">
-                <h1 transition:name={`title-${post.slug}`} class="text-5xl">Test</h1>
+        <div class=" bg-white p-4 flex flex-col flex-wrap h-screen">
+            <article class=" mx-auto [&>p]:mb-2 max-w-4xl">
+                <h1 transition:name={`title-${post.slug}`} transition:animate="fade" class="text-4xl p-4 text-center">Test</h1>
                 <Content></Content>
             </article>
         </div>

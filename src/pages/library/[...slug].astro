@@ -15,14 +15,15 @@ const {Content} = await book.render()
 
 <BasicLayout title={book.data.title}>
     <main>
-        <section class=" bg-white pb-4 flex flex-col w-100% flex-wrap">
-            <article class="p-4 w- max-w-3xl mx-auto [&>p]:mb-2">
-                <img transition:name={`image-${book.slug}`} class="mx-auto" src={`${book.data.image}`} alt="">
-                <h1 transition:name={`title-${book.slug}`} class="md:text-3xl text-3xl mt-4"><a>{book.data.title}</a></h1>
-                <div transition:animate="slide">
-                    <Content></Content>
+            <article class=" mx-auto [&>p]:mb-2 flex md:flex-row flex-col py-4 bg-white p-4 h-screen md:justify-center">
+            <img transition:name={`image-${book.slug}`} class="md:h-96" src={`${book.data.image}`} alt="">
+                <div class="max-w-3xl">
+                   <h1 transition:name={`title-${book.slug}`} class="md:text-3xl text-3xl p-4 text-center"><a>{book.data.title}</a></h1>
+                    <div class="md:px-4" transition:animate="slide">
+                        <Content></Content>
+                    </div>
                 </div>
             </article>
-        </section>
+
     </main>
 </BasicLayout>

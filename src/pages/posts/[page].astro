@@ -11,25 +11,23 @@ export const getStaticPaths = (async({paginate}) => {
 const {page} = Astro.props
 ---
 <BasicLayout title="Blogg">
-    <div class=" bg-white pb-4 flex flex-col w-100% flex-wrap">
-         <h1 class="text-4xl text-center">Blogg</h1>
+    <div class=" bg-white p-4 flex flex-col flex-wrap gap-4 h-screen">
+        <h1 class="text-4xl text-center p-4">Blogg</h1>
         {page.data.map((post)=>(
-            <article class="p-4 flex flex-row items-center max-w-3xl mx-auto">
-                <!--<div class="flex flex-row  ">
-                    <img class=" p-2" src={post.data.image}/>
-                </div>-->
+            <article class="flex flex-row items-center mx-auto max-w-4xl">
                 <div class="mx-auto">
                     <div class="flex flex-col">
-                        <h1 transition:name={`title-${post.slug}`}><a href={`/posts/${post.slug}`} class="text-3xl hover:text-slate-700 text-center">Test</a></h1>
+                        <h1 transition:animate="fade" transition:name={`title-${post.slug}`}><a href={`/posts/${post.slug}`} class="text-3xl hover:text-slate-700 text-right">Test</a></h1>
                         <div class="mx-auto line-clamp-3 leading-7 text-md">
                             {post.data.excerpt}
                         </div>
                     </div>
-                   <!-- <footer class="flex flex-row gap-2 p-2 mx-auto  ">
+                    <!--
+                   <footer class="flex flex-row gap-2 p-2 mx-auto  ">
                         {post.data.tags.map((tag)=>(
                             <div class="p-2 rounded-full text-center text-sm bg-slate-200 h-fit">{tag}</div>
                         ))}    
-                    </footer> --> 
+                    </footer> -->
                 </div>
             </article>
         ))}

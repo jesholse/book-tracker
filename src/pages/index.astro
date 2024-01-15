@@ -2,29 +2,42 @@
 import BasicLayout from "../layout/BasicLayout.astro";
 import Book from "../components/Book.astro"
 import FeaturedBook from "../components/FeaturedBook.astro"
-import { getEntry } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
+const posts = await getCollection("posts")
+posts.length = 3;
 const book = await getEntry("books", "vedtjuven")
-const reading = await getEntry("books", "i-själen-förskräckt")
+const reading = await getEntry("books", "the-black-coast")
 ---
 
 <BasicLayout title="Startsidan">
-	<main class="h-fit flex flex-col bg-white">
-		<section class="flex md:flex-row flex-col  max-w-5xl mx-auto">
-			<div class="flex flex-col justify-center items-center gap-3 bg-white md:w-1/2 md:p-12 p-2 py-4">
-				<h1 class="text-3xl font-bold text-center">Norrländsk litteratur</h1>
-				<h3 class="text-xl ">Ett kulturarv</h3>
+	<main class="h-fit flex flex-col gap-4 p-4 bg-white">
+		<section class="flex md:flex-row flex-col   gap-4">
+			<div class="flex flex-col justify-center items-center gap-3 md:w-1/2 md:p-12 p-4 ">
+				<h1 class="text-3xl font-bold text-center">Book tracker</h1>
+				<h3 class="text-xl ">Fantasy, norrländsk litteratur </h3>
 				<!--<input class="rounded-md p-2 w-3/4 border-2" placeholder="Sök bok"/>-->
-				<a href="/library/1" class="text-black p-1 border-b-2 border-slate-400 hover:text-slate-600">Bläddra i biblioteket</a>
+				<a href="/library/1" class="text-black p-1 border-b-2 border-slate-400 hover:text-slate-600">Browse the library</a>
 			</div>
-			<div class="h-fit p-4 flex flex-col gap-5 bg-white md:w-1/2">
+			<div class="h-fit  flex flex-col gap-5  md:w-1/2">
 				<FeaturedBook slug={book.slug} title={book.data.title} excerpt={book.data.excerpt} image={book.data.image} authorSlug={book.data.authorSlug} author={book.data.author}></FeaturedBook>
 			</div>
 		</section>
-		<section class="h-fit  p-4 max-w-5xl mx-auto">
-				<h1 class="text-3xl text-center font-bold pt-6">Läser just nu</h1>
-				<div class="h-fit flex flex-col flex-wrap  bg-white">
+		<section class="h-fit max-w-4xl flex flex-col md:mx-auto ">
+				<h1 class="text-3xl text-center font-bold  p-4">Just nu</h1>
+				<div class=" flex flex-col flex-wrap  ">
 					<Book slug={reading.slug} title={reading.data.title} excerpt={reading.data.excerpt} image={reading.data.image} authorSlug={reading.data.authorSlug} author={reading.data.author}></Book>
 				</div>
+		</section>
+		<h1 class="text-3xl text-center font-bold  p-4">Posts</h1>
+		<section class="flex md:flex-row flex-col gap-4">
+			{posts.map((post)=>(
+				<div class="basis-1/2">
+					<div class="bg-slate-100 p-4">
+						<h3 class=" text-2xl underline"><a href={`/posts/${post.slug}`}>{post.data.title}</a></h3>
+						<div class="line-clamp-5" >{post.data.excerpt}</div>
+					</div>
+				</div>
+			))}
 		</section>
 	</main>
 </BasicLayout>

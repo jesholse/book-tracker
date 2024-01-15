@@ -17,9 +17,9 @@ const getBooks = await getCollection("books", ({data})=>{
 ---
 <BasicLayout title={author.data.name}>
     <main>
-        <section class="h-full w-full bg-white">
-            <h5 class="text-4xl w-full text-center bg-white">{author.data.name}</h5>
-            <div class="md:p-12 p-4 flex flex-col justify-center items-center gap-2 bg-white w-full">
+        <section class="w-full bg-white p-4 h-screen">
+            <h5 class="text-4xl w-full text-center bg-white p-4">{author.data.name}</h5>
+            <div class=" flex flex-col justify-center items-center gap-2 bg-white w-full">
                 {getBooks.map((book)=>(<AuthorBook slug={book.slug} title={book.data.title} image={book.data.image} author={book.data.author} pages={book.data.pages} excerpt={book.data.excerpt}></AuthorBook>))}
             </div> 
         </section>

@@ -3,9 +3,9 @@
 const {title, image, pages, excerpt, slug} = Astro.props
 
 ---
-<div class="rounded-mx flex md:flex-row flex-col gap-4 px-4 py-1 max-w-3xl">
+<div class="rounded-mx flex md:flex-row flex-col gap-4  ">
     <img transition:name={`image-${slug}`} class="bg-slate-50 md:w-28" src={image}/>
-    <div class="">
+    <div>
         <h3 transition:name={`title-${slug}`} class="text-3xl hover:text-slate-700"><a href={`/library/${slug}`}>{title}</a></h3>
         <p transition:name={`excerpt-${slug}`} class="line-clamp-4 text-md ">{excerpt}</p>
     </div>
